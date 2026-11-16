@@ -1,0 +1,183 @@
+{
+  // Display name for this crew
+  "name": "agente_noticias",
+
+  // Agents to include — each must have a matching agents/<name>.jsonc file
+  "agents": ["analista_de_notcias_financeir", "especialista_em_economia_e_ind", "analista_especialista_em_polt"],
+
+  // Task definitions — executed in order for sequential process
+  "tasks": [
+    {
+      // Task identifier
+      "name": "pesquisar_notcias_financeiras_nacionais_task",
+
+      // What the task should accomplish
+      // Use {placeholder} inputs here; crewai run prompts for missing values
+      "description": "Pesquisar not\u00edcias financeiras nacionais e internacionais relevantes e atualizadas, priorizando acontecimentos que possam influenciar a economia e os mercados financeiros.Investigar not\u00edcias sobre:- Bolsas de valores brasileiras e internacionais.- Empresas, a\u00e7\u00f5es e resultados corporativos.- Infla\u00e7\u00e3o, PIB, emprego e indicadores econ\u00f4micos.- Decis\u00f5es de bancos centrais e taxas de juros.- C\u00e2mbio, commodities e mercado de renda fixa.- Pol\u00edtica econ\u00f4mica e acontecimentos geopol\u00edticos.Utilizar fontes confi\u00e1veis e reconhecidas, priorizando institui\u00e7\u00f5es oficiais, ve\u00edculos jornal\u00edsticos especializados e comunicados corporativos.Para cada not\u00edcia, identificar:1. T\u00edtulo e resumo.2. Data e hor\u00e1rio da publica\u00e7\u00e3o.3. Fonte e link original.4. Principais acontecimentos.5. Dados e indicadores envolvidos.6. Poss\u00edveis impactos econ\u00f4micos e financeiros.N\u00e3o inventar informa\u00e7\u00f5es, n\u00e3o utilizar not\u00edcias sem verificar sua origem e diferenciar fatos confirmados de expectativas e opini\u00f5es.Organizar os resultados em um relat\u00f3rio estruturado para os demais agentes da equipe.",
+
+      // Clear definition of what the output should look like
+      "expected_output": "Relat\u00f3rio profissional de not\u00edcias financeiras nacionais e internacionais, contendo t\u00edtulos, resumos, fontes verific\u00e1veis, links originais, datas de publica\u00e7\u00e3o, indicadores econ\u00f4micos relevantes e poss\u00edveis impactos nos mercados financeiros. O relat\u00f3rio dever\u00e1 ser organizado, objetivo e adequado para an\u00e1lise pelos demais agentes.",
+
+      // Optional task guardrail(s) validate output before completion
+      // Use "guardrail" for one rule or "guardrails" for many
+      // Failed guardrails retry up to guardrail_max_retries times
+      // "guardrail": "Every factual claim needs context support.",
+      // "guardrails": [
+      //   "Every factual claim must be supported by context.",
+      //   "The answer must match the expected output format."
+      // ],
+      // "guardrail_max_retries": 2,
+
+      // Advanced task options:
+      // Docs: https://docs.crewai.com/concepts/tasks
+      // "type": "ConditionalTask",
+      // "condition": { "python": "my_project.conditions.should_run" },
+      // "output_json": { "python": "my_project.models.ReportOutput" },
+      // "output_pydantic": null,
+      // "response_model": null,
+      // "converter_cls": { "python": "my_project.converters.CustomConverter" },
+      // "markdown": false,
+      // "input_files": { "brief": "data/brief.txt" },
+      // "security_config": {},
+
+      // Which agent handles this task
+      "agent": "analista_de_notcias_financeir"
+
+      // "tools": [],
+      // "human_input": false,
+      // "async_execution": false
+    }
+,
+    {
+      // Task identifier
+      "name": "analisar_os_principais_indicadores_task",
+
+      // What the task should accomplish
+      // Use {placeholder} inputs here; crewai run prompts for missing values
+      "description": "Analisar os principais indicadores econ\u00f4micos do Brasil e do cen\u00e1rio internacional, incluindo infla\u00e7\u00e3o, PIB, taxa Selic, juros, desemprego, c\u00e2mbio e atividade econ\u00f4mica.Investigar dados divulgados por institui\u00e7\u00f5es oficiais, como Banco Central do Brasil, IBGE, Federal Reserve, FMI e Banco Mundial.Interpretar os resultados, comparar os indicadores com per\u00edodos anteriores, identificar tend\u00eancias econ\u00f4micas e explicar como esses acontecimentos podem influenciar a economia, os mercados financeiros e os investimentos.Diferenciar dados oficiais, estimativas e proje\u00e7\u00f5es. N\u00e3o inventar informa\u00e7\u00f5es.Produzir um relat\u00f3rio econ\u00f4mico t\u00e9cnico, organizado e de f\u00e1cil compreens\u00e3o para os demais agentes.",
+
+      // Clear definition of what the output should look like
+      "expected_output": "Relat\u00f3rio de an\u00e1lise econ\u00f4mica nacional e internacional contendo indicadores macroecon\u00f4micos atualizados, dados oficiais, compara\u00e7\u00f5es hist\u00f3ricas, identifica\u00e7\u00e3o de tend\u00eancias e interpreta\u00e7\u00e3o dos poss\u00edveis impactos na economia e nos mercados financeiros. Apresentar fontes, links de refer\u00eancia, datas de divulga\u00e7\u00e3o e conclus\u00f5es fundamentadas, utilizando linguagem profissional e acess\u00edvel.",
+
+      // Optional task guardrail(s) validate output before completion
+      // Use "guardrail" for one rule or "guardrails" for many
+      // Failed guardrails retry up to guardrail_max_retries times
+      // "guardrail": "Every factual claim needs context support.",
+      // "guardrails": [
+      //   "Every factual claim must be supported by context.",
+      //   "The answer must match the expected output format."
+      // ],
+      // "guardrail_max_retries": 2,
+
+      // Advanced task options:
+      // Docs: https://docs.crewai.com/concepts/tasks
+      // "type": "ConditionalTask",
+      // "condition": { "python": "my_project.conditions.should_run" },
+      // "output_json": { "python": "my_project.models.ReportOutput" },
+      // "output_pydantic": null,
+      // "response_model": null,
+      // "converter_cls": { "python": "my_project.converters.CustomConverter" },
+      // "markdown": false,
+      // "input_files": { "brief": "data/brief.txt" },
+      // "security_config": {},
+
+      // Which agent handles this task
+      "agent": "analista_de_notcias_financeir",
+
+      // Task outputs used as context
+      "context": ["pesquisar_notcias_financeiras_nacionais_task"]
+
+      // "tools": [],
+      // "human_input": false,
+      // "async_execution": false
+    }
+,
+    {
+      // Task identifier
+      "name": "pesquisar_e_analisar_as_task",
+
+      // What the task should accomplish
+      // Use {placeholder} inputs here; crewai run prompts for missing values
+      "description": "Pesquisar e analisar as decis\u00f5es dos principais bancos centrais do mundo, incluindo Banco Central do Brasil (BCB), Federal Reserve (Fed), Banco Central Europeu (BCE), Banco da Inglaterra (BoE) e Banco do Jap\u00e3o (BoJ).Investigar decis\u00f5es sobre taxas de juros, pol\u00edtica monet\u00e1ria, controle da infla\u00e7\u00e3o, liquidez financeira e medidas de est\u00edmulo ou restri\u00e7\u00e3o econ\u00f4mica.Analisar comunicados oficiais, atas de reuni\u00f5es, discursos de dirigentes e relat\u00f3rios institucionais.Identificar mudan\u00e7as de posicionamento monet\u00e1rio, classificando-as como hawkish (restritivas) ou dovish (expansionistas), quando aplic\u00e1vel.Explicar os poss\u00edveis impactos dessas decis\u00f5es sobre infla\u00e7\u00e3o, c\u00e2mbio, bolsas de valores, t\u00edtulos p\u00fablicos, cr\u00e9dito e investimentos nacionais e internacionais.Utilizar informa\u00e7\u00f5es verific\u00e1veis, apresentar fontes e datas e diferenciar decis\u00f5es confirmadas de expectativas do mercado.",
+
+      // Clear definition of what the output should look like
+      "expected_output": "Relat\u00f3rio profissional de pol\u00edtica monet\u00e1ria contendo decis\u00f5es recentes dos principais bancos centrais, taxas de juros, interpreta\u00e7\u00e3o de comunicados e atas, posicionamento monet\u00e1rio, fontes oficiais, datas e poss\u00edveis impactos sobre a economia e os mercados financeiros. Apresentar conclus\u00f5es fundamentadas, organizadas e acess\u00edveis.",
+
+      // Optional task guardrail(s) validate output before completion
+      // Use "guardrail" for one rule or "guardrails" for many
+      // Failed guardrails retry up to guardrail_max_retries times
+      // "guardrail": "Every factual claim needs context support.",
+      // "guardrails": [
+      //   "Every factual claim must be supported by context.",
+      //   "The answer must match the expected output format."
+      // ],
+      // "guardrail_max_retries": 2,
+
+      // Advanced task options:
+      // Docs: https://docs.crewai.com/concepts/tasks
+      // "type": "ConditionalTask",
+      // "condition": { "python": "my_project.conditions.should_run" },
+      // "output_json": { "python": "my_project.models.ReportOutput" },
+      // "output_pydantic": null,
+      // "response_model": null,
+      // "converter_cls": { "python": "my_project.converters.CustomConverter" },
+      // "markdown": false,
+      // "input_files": { "brief": "data/brief.txt" },
+      // "security_config": {},
+
+      // Which agent handles this task
+      "agent": "analista_de_notcias_financeir"
+
+      // "tools": [],
+      // "human_input": false,
+      // "async_execution": false
+    }
+
+  ],
+
+  // Execution process
+  // "sequential" — tasks run in order, each receiving prior task outputs
+  // "hierarchical" — a manager agent delegates tasks (requires manager_llm)
+  "process": "sequential",
+
+  // Enable verbose logging during execution
+  "verbose": true,
+
+  // Enable crew memory — persists context and learnings across tasks
+  "memory": false,
+
+  // Automatically plan the execution strategy before running tasks
+  // "planning": false,
+
+  // LLM for the planning step (used when planning is true)
+  // "planning_llm": "openai/gpt-4o",
+
+  // LLM for the manager agent (required when process is "hierarchical")
+  // "manager_llm": "openai/gpt-4o",
+
+  // Crew-level LLM fields also accept object form for custom endpoints
+  // "chat_llm": {"model": "llama3", "provider": "ollama", "base_url": "http://localhost:11434"},
+
+  // Advanced crew options:
+  // Docs: https://docs.crewai.com/concepts/crews
+  // For hierarchical crews, manager_agent can reference an agents/<name>.jsonc file
+  // that is not included in the "agents" list.
+  // "manager_agent": "analista_de_notcias_financeir",
+  // "before_kickoff_callbacks": [{"python": "my_project.callbacks.before_kickoff"}],
+  // "after_kickoff_callbacks": [{"python": "my_project.callbacks.after_kickoff"}],
+  // "function_calling_llm": "openai/gpt-4o-mini",
+  // "max_rpm": null,
+  // "cache": true,
+  // "knowledge_sources": [],
+  // "embedder": {},
+  // "output_log_file": "crew.log",
+  // "stream": false,
+  // "tracing": false,
+  // "security_config": {},
+
+  // Optional runtime input defaults.
+  // Use {placeholder} in agent or task text, for example:
+  // "description": "Research {topic} and write a brief"
+  // `crewai run` prompts for any placeholders missing from this object.
+  "inputs": {}
+}
