@@ -1,54 +1,68 @@
-# AgenteNoticias Crew
+# 📰 Agente de Notícias Financeiro
 
-Welcome to the AgenteNoticias Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Agente de IA, feito com [CrewAI](https://docs.crewai.com), que busca, analisa e resume notícias do mercado financeiro. <ajuste: o que ele entrega no final, por exemplo um relatório em .md>
 
-## Installation
+## Estrutura do projeto
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
-
-First, if you haven't already, install uv:
-
-```bash
-pip install uv
+```
+agente_noticias/
+├── .env                      # Variáveis locais (LLM, chaves). NÃO versionar
+├── .gitignore
+├── pyproject.toml            # Dependências e metadados do projeto
+├── README.md
+├── knowledge/                # Arquivos de contexto para os agentes (opcional)
+├── tests/
+└── src/
+    └── agente_noticias/
+        ├── main.py           # Ponto de entrada: define os inputs e inicia a crew
+        ├── crew.py           # Monta a crew: liga agentes e tarefas
+        ├── config/
+        │   ├── agents.yaml   # Papel, objetivo e histórico de cada agente
+        │   └── tasks.yaml    # Descrição e saída esperada de cada tarefa
+        └── tools/
+            └── custom_tool.py  # Ferramentas customizadas (busca, APIs etc.)
 ```
 
-Next, navigate to your project directory and install the dependencies:
+| Arquivo/Pasta | Para que serve |
+|---|---|
+| `config/agents.yaml` | Define **quem** são os agentes (função, objetivo, backstory). |
+| `config/tasks.yaml` | Define **o que** cada agente deve fazer e o formato da resposta. |
+| `crew.py` | Conecta agentes e tarefas e define como são executados. |
+| `main.py` | Roda a crew; é aqui que você altera os inputs (ex.: tema ou ativo). |
+| `tools/` | Ferramentas que os agentes podem usar. |
+| `.env` | Configuração local do LLM e chaves de API. |
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+## Como criar e executar
+
 ```bash
+# 1. Criar o projeto (já feito; só para referência)
+crewai create crew agente_noticias
+
+# 2. Entrar na pasta e instalar as dependências
+cd agente_noticias
 crewai install
-```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/agente_noticias/config/agents.yaml` to define your agents
-- Modify `src/agente_noticias/config/tasks.yaml` to define your tasks
-- Modify `src/agente_noticias/crew.py` to add your own logic, tools and specific args
-- Modify `src/agente_noticias/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
+# 3. Executar o agente
+crewai run
 ```
 
-This command initializes the agente_noticias Crew, assembling the agents and assigning them tasks as defined in your configuration.
+## Configuração do `.env`
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+O `.env` fica **apenas na sua máquina** e diz à CrewAI qual LLM usar. Exemplos:
 
-## Understanding Your Crew
+```env
+# LLM local via Ollama
+MODEL=ollama/<modelo>
+API_BASE=http://localhost:11434
 
-The agente_noticias Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+# ou LLM em nuvem
+# MODEL=<provedor>/<modelo>
+# <PROVEDOR>_API_KEY=sua_chave_aqui
+```
 
-## Support
+> ⚠️ Nunca suba o `.env` para o GitHub. Confirme que ele está no `.gitignore`.
 
-For support, questions, or feedback regarding the AgenteNoticias Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+## Requisitos
+- Python <versão do seu pyproject.toml>
+- [uv](https://docs.astral.sh/uv/) (usado pelo `crewai install`)
+- <LLM local rodando, se for o caso>
